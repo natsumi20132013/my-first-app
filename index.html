@@ -3,40 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Side Runner MVP</title>
+    <title>ジェットコースター工房</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="game-shell">
-      <div class="topbar">
-        <div class="brand">Side Runner</div>
-        <div class="controls">
-          <span>Move: A / D</span>
-          <span>Jump: W / Space</span>
-          <span>Shoot: J / K</span>
+    <main class="game-shell">
+      <header class="topbar">
+        <div>
+          <div class="brand">ジェットコースター工房</div>
+          <div class="tagline">線路をつないで、自分だけのコースを作ろう！</div>
         </div>
-      </div>
+        <div class="audio-controls">
+          <span>音声切替: M</span>
+          <button class="audio-toggle" id="audioToggle" type="button" aria-pressed="true">音声: ON</button>
+        </div>
+      </header>
 
-      <div class="canvas-wrap">
+      <section class="builder" aria-label="コース作成">
+        <div class="builder-group">
+          <span class="group-label">線路パーツ</span>
+          <div class="piece-tools">
+            <button class="piece-button selected" type="button" data-piece="flat" aria-pressed="true">直線</button>
+            <button class="piece-button" type="button" data-piece="climb" aria-pressed="false">上り坂</button>
+            <button class="piece-button" type="button" data-piece="drop" aria-pressed="false">下り坂</button>
+            <button class="piece-button" type="button" data-piece="hill" aria-pressed="false">山</button>
+            <button class="piece-button" type="button" data-piece="valley" aria-pressed="false">谷</button>
+            <button class="piece-button" type="button" data-piece="curveLeft" aria-pressed="false">左カーブ</button>
+            <button class="piece-button" type="button" data-piece="curveRight" aria-pressed="false">右カーブ</button>
+            <button class="piece-button" type="button" data-piece="loop" aria-pressed="false">ループ</button>
+          </div>
+        </div>
+        <div class="build-actions">
+          <button class="add-piece-button" id="addPieceButton" type="button">パーツを追加</button>
+          <button class="secondary-button" id="undoButton" type="button">ひとつ戻す</button>
+          <button class="secondary-button" id="resetButton" type="button">作り直す</button>
+          <button class="ride-button" id="rideButton" type="button">試運転する</button>
+        </div>
+      </section>
+
+      <section class="canvas-wrap" aria-label="ジェットコースターのコース">
         <div class="hud">
           <div class="hud-box">
-            <span class="hud-label">Score</span>
-            <span class="hud-value" id="score">0</span>
+            <span class="hud-label">コース長</span>
+            <span class="hud-value" id="trackLength">0 m</span>
           </div>
           <div class="hud-box">
-            <span class="hud-label">Best</span>
-            <span class="hud-value" id="best">0</span>
+            <span class="hud-label">最高速度</span>
+            <span class="hud-value" id="topSpeed">0 km/h</span>
           </div>
           <div class="hud-box">
-            <span class="hud-label">HP</span>
-            <span class="hud-value" id="hp">5 / 5</span>
+            <span class="hud-label">ライド評価</span>
+            <span class="hud-value" id="rideScore">-</span>
           </div>
         </div>
 
-        <canvas id="gameCanvas" width="960" height="540"></canvas>
-        <div class="notice" id="notice">Move: A / D or ← / →   Jump: W / ↑ / Space   Shoot: J / K</div>
-      </div>
-    </div>
+        <canvas id="gameCanvas" width="960" height="540" aria-label="作成した線路と走行中のコースター"></canvas>
+        <div class="notice" id="notice">パーツを選んで「パーツを追加」を押そう！</div>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>

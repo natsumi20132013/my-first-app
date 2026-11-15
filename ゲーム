@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サイドランナー MVP</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-shell">
+      <div class="topbar">
+        <div class="brand">サイドランナー</div>
+        <div class="controls">
+          <span>移動: A / D</span>
+          <span>ジャンプ: W / Space</span>
+          <span>攻撃: J / K</span>
+        </div>
+      </div>
+
+      <div class="canvas-wrap">
+        <div class="hud">
+          <div class="hud-box">
+            <span class="hud-label">スコア</span>
+            <span class="hud-value" id="score">0</span>
+          </div>
+          <div class="hud-box">
+            <span class="hud-label">ベスト</span>
+            <span class="hud-value" id="best">0</span>
+          </div>
+          <div class="hud-box">
+            <span class="hud-label">HP</span>
+            <span class="hud-value" id="hp">5 / 5</span>
+          </div>
+        </div>
+
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+        <div class="notice" id="notice">移動: A / D または ← / →   ジャンプ: W / ↑ / Space   攻撃: J / K</div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
